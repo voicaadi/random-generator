@@ -71,3 +71,13 @@ jobs:
 
       - name: Authenticate with Amazon ECR
         run: aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 523440497427.dkr.ecr.eu-central-1.amazonaws.com
+
+      - name: Push backend image
+        run: |
+          docker tag backend:latest 523440497427.dkr.ecr.eu-central-1.amazonaws.com/prepod/random-generator-repository/backend:latest
+          docker push 523440497427.dkr.ecr.eu-central-1.amazonaws.com/prepod/random-generator-repository/backend:latest
+
+      - name: Push frontend image
+        run: |
+          docker tag frontend:latest 523440497427.dkr.ecr.eu-central-1.amazonaws.com/prepod/random-generator-repository/frontend:latest
+          docker push 523440497427.dkr.ecr.eu-central-1.amazonaws.com/prepod/random-generator-repository/frontend:latest
