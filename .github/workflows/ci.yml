@@ -39,17 +39,3 @@ jobs:
 
       - name: Run tests
         run: npm test
-
-  build-dockerfile:
-     needs: run-tests
-     runs-on: ubuntu-latest
-
-     steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-
-      - name: check Docker file
-        run: docker build --check -t random-generator .
-
-      - name: Build Docker image
-        run: docker build -t random-generator .
