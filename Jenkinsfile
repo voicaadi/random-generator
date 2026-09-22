@@ -19,3 +19,17 @@ pipeline {
         }
     }
 }
+node {
+  stage('Checkout') {
+    // Checkout code from version control
+    checkout scm
+  }
+  stage('Build') {
+    // Build the application
+    sh 'make all'
+  }
+  stage('Test') {
+    // Run tests
+    sh 'make test'
+  }
+}
